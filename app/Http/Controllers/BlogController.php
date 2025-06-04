@@ -70,7 +70,9 @@ class BlogController extends Controller
    public function showCategory($id)
    {
     $category = Category::findOrFail($id);
-    return view('blog.showCategory', ["category" => $category]);
+    $posts = $category->posts()->paginate(8);
+
+    return view('blog.showCategory', ["category" => $category, "posts" => $posts]);
    }
 
     

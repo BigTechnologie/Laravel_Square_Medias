@@ -15,7 +15,9 @@
                       <img src="{{ $category->imageUrl }}" height="200" alt="">
                      <div class="categorie-details p-1">
                          <h4>{{ $category->name }}</h4>
-                         <p>{{ $category->description }}</p>
+                        <div>
+                            Nombre d'articles : {{ $category->posts->count() }}
+                        </div>
                          <small>{{ $category->created_at->diffForHumans() }}</small>
                      </div>
                     </a>

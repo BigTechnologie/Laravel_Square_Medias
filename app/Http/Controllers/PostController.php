@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PostFormRequest;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\Post;
 
@@ -22,15 +24,21 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view("posts.create");
+        $categories = Category::all();
+        return view("posts.create", ["categories" => $categories]);
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+     public function store(PostFormRequest $request) 
     {
         //
+        $data = $request->validated(); 
+
+        Post::create($data);
+
+        return redirect()->route("admin.post.index")->with("success","Votre produit a bien été crée !"); 
     }
 
     /**

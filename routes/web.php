@@ -91,11 +91,12 @@ Route::prefix('blog')->namespace('App\Http\Controllers')->name('blog.')->group(f
     Route::get('/categories/show/{id}', 'BlogController@showCategory')->name('show.category');
 });
 
-//Mise en place des routes pour l'administration du site
-Route::prefix('admin')->namespace('App\Http\Controllers')->name('admin.')->group(function() {
+// Mise en place des routes pour l'administration du site
+Route::prefix('admin')->namespace('App\Http\Controllers')->name('admin.')->group(function () {
 
     Route::get('/posts', 'PostController@index')->name('post.index');
     Route::get('/posts/create', 'PostController@create')->name('post.create');
+    Route::post('/posts/store', 'PostController@store')->name('post.store'); // A Ajouter // A FAIRE
 });
 
 // Les routes de secours (erreur 404)

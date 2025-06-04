@@ -14,6 +14,11 @@
                 <div class="create-btn d-flex justify-content-end my-2">
                     <a href="{{ route('admin.post.create') }}" class="btn btn-primary">Create Post</a>
                 </div>
+                @if (session('success'))
+                    <div class="alert alert-success">
+                        {{ session('success') }}
+                    </div>
+                @endif
                 <table class="table table-bordered">
                     <thead>
                         <tr>
